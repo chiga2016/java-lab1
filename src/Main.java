@@ -32,8 +32,9 @@ public class Main {
         Korobka korobka1= new Korobka("Первая коробка",1,20,"10","Плоская", "Синяя");
         //meshok1.addItem(kirpich1);
 
-       // korobka1.addItem(kirpich1);
-       // korobka1.addItem(kirpich2);
+        korobka1.addItem(kirpich1);
+        korobka1.addItem(kirpich2);
+        korobka1.getInfoItem();
 
         //System.out.println(korobka1.getInfoItem());
 
@@ -57,6 +58,8 @@ public class Main {
 
           Stopka stopka1 = new Stopka("первая стопка",20,20,"Странная");
           stopka1.addItem(kirpich1);
+
+        System.out.println(stopka1.getInfoItem());
         //  stopka1.getInfoItem();
 
 

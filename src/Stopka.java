@@ -26,7 +26,9 @@ public class Stopka extends ItemContainer {
     }
 
     @Override
-    public String getInfoItem () { String infoItem = getClass() + " ;Название предмета: " + getName() + " ;Вес предмета: " + getWeight() + "; Максимальное количество предметов: " + maxItem; return infoItem;}
+    public String getInfoItem () { String infoItem = getClass() + " ;Название предмета: " + getName() + " ;Вес предмета: " + getWeight() + "; Максимальное количество предметов: " + getMaxItem()  + "; Количество предметов внутри " + countItem();
+        return ( infoItem);
+    }
 }
 
 
