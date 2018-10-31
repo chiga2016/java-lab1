@@ -1,7 +1,6 @@
 import java.util.HashSet;
 
 public abstract class Item {
-    //String param1;
     private String name;
     private double weight;
     private HashSet<String> param = new HashSet<String>();

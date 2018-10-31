@@ -3,6 +3,7 @@ import java.util.LinkedList;
 public abstract class ItemContainer extends Item  {
     double currentWeight;
     double maxWeight;
+
     LinkedList<Item> arr1 = new LinkedList<Item>();
 
    public ItemContainer(String name, double weight, String ...str) {
@@ -17,13 +18,13 @@ public abstract class ItemContainer extends Item  {
         return maxWeight;
     }
 
-   public void addItem(Item item) {
+   public void addItem(Item item)  throws ItemInContainerException {
        if ((item).getItemInContainer()) {
-           System.out.println("предмет уже добавлен в контейнер");
-
+          throw new ItemInContainerException("предмет уже добавлен в контейнер");
+           //System.out.println("предмет уже добавлен в контейнер");
        }
        else {
-           (item).setItemInContainer(true);
+           item.setItemInContainer(true);
            arr1.add(item);
        }
    }
