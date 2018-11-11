@@ -52,11 +52,11 @@ public abstract class Item {
                 return name;
             }
             else {
-                name ="Элемент не найден" ;
+                throw new NullPointerException();
             }
         }
         catch (NullPointerException e) {
-            name ="Элемент не найден" ;
+            name = e + " Элемент не найден" ;
         }
         return name;
     }
@@ -77,13 +77,18 @@ public abstract class Item {
 
     public String getInfoItem () { String infoItem = getClass() + "; Название предмета: " + name + "; Вес предмета: " + weight + "; В контейнере? "+ getItemInContainer() + "; Доп.параметр:" + getParam(); return infoItem;}
 
-    public static boolean isPloskii(Item it){
-        if (it.getParam().toLowerCase().contains("плоский")) {
-            return  true;
+    public String getInfoItemFinded () { String infoItem = "НАЙДЕН ОБЪЕКТ: " + getClass() + "; Название предмета: " + name + "; Вес предмета: " + weight + "; В контейнере? "+ getItemInContainer() + "; Доп.параметр:" + getParam(); return infoItem;}
+
+
+    public boolean isPloskii(){
+        boolean bool;
+        if (getParam().toLowerCase().contains("плоский")) {
+            bool =  true;
         }
         else {
-            return false;
+            bool = false;
         }
+        return bool;
     }
 
 

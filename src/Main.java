@@ -4,28 +4,35 @@ public class Main {
    // private static Object randomgenerator1;
     public static Random randomgenerator1;
 
-    public static void main(String[] args) throws ItemAlreadyPlacedException {
-        Kirpich kirpich1 = new Kirpich("Первый кирпич", 5.6, "красный", "облицовочный","плоский");
-        Kirpich kirpich2 = new Kirpich("Второй кирпич", 5.6, "белый");
-        Kirpich kirpich3 = new Kirpich("Третий кирпич", 5.6, "не получился");
+    public static void main(String[] args) throws ItemAlreadyPlacedException, ItemStoreException, ItemNotFlatException {
+        Kirpich kirpich1 = new Kirpich("Первый кирпич", 4.9, "красный", "облицовочный","плоский");
+        Kirpich kirpich2 = new Kirpich("Второй кирпич", 4.9, "белый");
+        Kirpich kirpich3 = new Kirpich("Третий кирпич", 4.9, "не получился");
+        Kirpich kirpich4 = new Kirpich(null, 4.9, "не получился");
 
         Meshok meshok1 = new Meshok("Первый мешок", 0.1,10, "Полиэтиленовый");
-        Meshok meshok2 = new Meshok("Второй мешок", 0.1,10, "Плоский");
+        Meshok meshok2 = new Meshok("Второй мешок", 0.1,10, "Бумажный");
 
-        Korobka korobka1= new Korobka("Первая коробка",1,20,"10","Плоская", "Синяя");
+        Korobka korobka1= new Korobka("Первая коробка",1,20,"10","плоский", "Синяя");
         Korobka korobka2 = new Korobka("Вторая коробка",1,15,"плоский");
 
-        Stopka stopka1 = new Stopka("Первая стопка",20,20,"Странная");
+        Stopka stopka1 = new Stopka("Первая стопка",1,1,"Странная");
 
         meshok2.addItem(kirpich1, meshok1);
         meshok2.addItem(kirpich2, meshok2);
-        meshok2.addItem(kirpich3, meshok2);
+
+        //stopka1.addItem(meshok1,stopka1);
+        //System.out.println(korobka1.isPloskii());
+        stopka1.addItem(kirpich1,stopka1);
+       // meshok2.addItem(kirpich3, meshok2);
+
+       // System.out.println(kirpich4.getName()); ;
 
         //System.out.println(meshok2.arr1..getName());
         // meshok2.outItem(meshok2.countItem());
           //System.out.println(meshok2.outItem().getName());
 
-        System.out.println(meshok2.findItem("Первый ").getName());
+       // System.out.println(meshok2.findItem("Второй ").getInfoItemFinded());
 
         //System.out.println(meshok2.outItem(5));
 

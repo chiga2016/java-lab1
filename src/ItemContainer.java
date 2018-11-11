@@ -25,16 +25,23 @@ public abstract class ItemContainer extends Item  {
         return maxWeight;
     }
 
-   public void addItem(Item item, ItemContainer itemcont)  throws ItemAlreadyPlacedException {
-       if ((item).getItemInContainer()) {
-               throw new ItemAlreadyPlacedException("предмет уже добавлен в контейнер");
-          }
-       else {
-           item.setItemInContainer(true);
-           item.setItemInContainerMap(item,itemcont);
-
-           arr1.add(item);
+   public void addItem(Item item, ItemContainer itemcont) throws ItemAlreadyPlacedException, ItemStoreException, ItemNotFlatException {
+       if (sumWeight() + item.getWeight()>maxWeight) {
+           throw new ItemStoreException("Предмет " + item.getName() + " с весом = " + item.getWeight() + " не может быть добавлен. Максимальный вес достигнут. Текущий вес " + sumWeight());
        }
+       else {
+           if ((item).getItemInContainer()) {
+               throw new ItemAlreadyPlacedException("предмет уже добавлен в контейнер");
+           }
+           else {
+               item.setItemInContainer(true);
+               item.setItemInContainerMap(item,itemcont);
+
+               arr1.add(item);
+           }
+       }
+
+
    }
     public int countItem(){
         return arr1.size();
@@ -50,22 +57,21 @@ public abstract class ItemContainer extends Item  {
    }
 
    public Item findItem(String str) {
-       Item item=null;
+       Item item = null;
        try {
+
            for (int i = 0; i < arr1.size(); i++) {
                if (arr1.get(i).getName().matches(str)) {
                    item = arr1.get(i);
                }
            }
+           if (item==null) { throw new NullPointerException();}
 
        }
        catch (NullPointerException e) {
-           System.out.println("Элемент не найден" );
+           System.out.println(e+" Элемент не найден" );
        }
-
            return item;
-
-
    }
 
     public double sumWeight(){
