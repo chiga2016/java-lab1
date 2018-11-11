@@ -20,13 +20,13 @@ public class Stopka extends ItemContainer {
     }
 
     @Override
-    public void addItem(Item item) {
+    public void addItem(Item item, ItemContainer itemcont) {
         stack1.add(item);
         //return false;
     }
 
     @Override
-    public String getInfoItem () { String infoItem = getClass() + " ;Название предмета: " + getName() + " ;Вес предмета: " + getWeight() + "; Максимальное количество предметов: " + getMaxItem()  + "; Количество предметов внутри " + countItem();
+    public String getInfoItem () { String infoItem = getClass() + " ;Название предмета: " + getName() + " ;Вес предмета: " + getWeight() + "; Максимальное количество предметов: " + getMaxItem()  + "; Количество предметов в стопке " + countItem();
         return ( infoItem);
     }
 }

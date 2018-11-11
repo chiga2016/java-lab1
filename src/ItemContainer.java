@@ -1,10 +1,17 @@
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedList;
+import java.util.Random;
+
 public abstract class ItemContainer extends Item  {
+    protected Random randomGenerator;
     double currentWeight;
     double maxWeight;
 
-    LinkedList<Item> arr1 = new LinkedList<Item>();
+   LinkedList<Item> arr1 = new LinkedList<Item>();
+    //ArrayList<Item> arr1 = new ArrayList<Item>();
+
+
 
    public ItemContainer(String name, double weight, String ...str) {
         super(name, weight, str);
@@ -18,13 +25,14 @@ public abstract class ItemContainer extends Item  {
         return maxWeight;
     }
 
-   public void addItem(Item item)  throws ItemInContainerException {
+   public void addItem(Item item, ItemContainer itemcont)  throws ItemAlreadyPlacedException {
        if ((item).getItemInContainer()) {
-          throw new ItemInContainerException("предмет уже добавлен в контейнер");
-           //System.out.println("предмет уже добавлен в контейнер");
-       }
+               throw new ItemAlreadyPlacedException("предмет уже добавлен в контейнер");
+          }
        else {
            item.setItemInContainer(true);
+           item.setItemInContainerMap(item,itemcont);
+
            arr1.add(item);
        }
    }
@@ -32,12 +40,33 @@ public abstract class ItemContainer extends Item  {
         return arr1.size();
     }
 
-   public void outItem(Item item){
-       arr1.remove( item);
-       (item).setItemInContainer(false);
+   public Item outItem(){
+       Random r = new Random();
+       int index = r.nextInt(arr1.size());
+       Item item1 = arr1.get(index);
+       arr1.remove( item1);
+       item1.setItemInContainer(false);
+       return item1;
    }
 
-   public void findItem(Item item){arr1.contains(item);}
+   public Item findItem(String str) {
+       Item item=null;
+       try {
+           for (int i = 0; i < arr1.size(); i++) {
+               if (arr1.get(i).getName().matches(str)) {
+                   item = arr1.get(i);
+               }
+           }
+
+       }
+       catch (NullPointerException e) {
+           System.out.println("Элемент не найден" );
+       }
+
+           return item;
+
+
+   }
 
     public double sumWeight(){
         currentWeight = 0;

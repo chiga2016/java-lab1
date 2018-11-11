@@ -1,9 +1,12 @@
+import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Map;
 
 public abstract class Item {
     private String name;
     private double weight;
     private HashSet<String> param = new HashSet<String>();
+    private HashMap<Integer,ItemContainer> itemInContainerMap = new HashMap<Integer,ItemContainer>();
     private boolean itemInContainer;
 
     public Item (String name,double weight,String ...str) {
@@ -13,6 +16,19 @@ public abstract class Item {
         for (int i = 0; i<str.length; i++)
             {setParam(str[i]);}
     }
+
+    public void setItemInContainerMap(Item item,ItemContainer itemContainer) {
+        itemInContainerMap.put(item.hashCode(),itemContainer);
+    }
+
+    public String getItemInContainerMap(Item item) {
+       return itemInContainerMap.get(item).getName();
+       // return itemInContainerMap;
+    }
+    public int getSizeItenContMap () {
+       return itemInContainerMap.size();
+    }
+
 
     public void setName(String name) {
         this.name = name;
@@ -26,20 +42,22 @@ public abstract class Item {
         param.add(param1);
     }
 
-    public static boolean isPloskii(Item it){
-        if (it.getParam().toLowerCase().contains("плоский")) {
-            return  true;
-        }
-        else {
-            return false;
-        }
-    }
-
     public double getWeight() {
         return weight;
     }
 
     public String getName() {
+        try {
+            if (name!=null) {
+                return name;
+            }
+            else {
+                name ="Элемент не найден" ;
+            }
+        }
+        catch (NullPointerException e) {
+            name ="Элемент не найден" ;
+        }
         return name;
     }
 
@@ -58,7 +76,15 @@ public abstract class Item {
     }
 
     public String getInfoItem () { String infoItem = getClass() + "; Название предмета: " + name + "; Вес предмета: " + weight + "; В контейнере? "+ getItemInContainer() + "; Доп.параметр:" + getParam(); return infoItem;}
+
+    public static boolean isPloskii(Item it){
+        if (it.getParam().toLowerCase().contains("плоский")) {
+            return  true;
+        }
+        else {
+            return false;
+        }
     }
 
 
-
+}
