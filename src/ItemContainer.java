@@ -8,8 +8,8 @@ public abstract class ItemContainer extends Item  {
     double currentWeight;
     double maxWeight;
 
-   LinkedList<Item> arr1 = new LinkedList<Item>();
-    //ArrayList<Item> arr1 = new ArrayList<Item>();
+  // LinkedList<Item> arr1 = new LinkedList<Item>();
+    ArrayList<Item> arr1 = new ArrayList<Item>();
 
 
 
@@ -25,7 +25,7 @@ public abstract class ItemContainer extends Item  {
         return maxWeight;
     }
 
-   public void addItem(Item item, ItemContainer itemcont) throws ItemAlreadyPlacedException, ItemStoreException, ItemNotFlatException {
+   public void addItem(Item item) throws ItemAlreadyPlacedException, ItemStoreException, ItemNotFlatException {
        if (sumWeight() + item.getWeight()>maxWeight) {
            throw new ItemStoreException("Предмет " + item.getName() + " с весом = " + item.getWeight() + " не может быть добавлен. Максимальный вес достигнут. Текущий вес " + sumWeight());
        }
@@ -35,13 +35,10 @@ public abstract class ItemContainer extends Item  {
            }
            else {
                item.setItemInContainer(true);
-               item.setItemInContainerMap(item,itemcont);
-
+              // item.setItemInContainerMap(item,itemcont);
                arr1.add(item);
            }
        }
-
-
    }
     public int countItem(){
         return arr1.size();

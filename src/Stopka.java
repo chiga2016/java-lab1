@@ -24,7 +24,7 @@ public class Stopka extends ItemContainer {
     }
 
     @Override
-    public void addItem(Item item, ItemContainer itemcont) throws ItemStoreException, ItemAlreadyPlacedException, ItemNotFlatException {
+    public void addItem(Item item) throws ItemStoreException, ItemAlreadyPlacedException, ItemNotFlatException {
         if (countItem() + 1 > maxItem) {
             throw new ItemStoreException("Предмет " + item.getName() + " не может быть добавлен. Максимальное количество предметов(" + maxItem +")достигнуто. " + "Текущее количество предметов = " + countItem());
         }
@@ -39,7 +39,7 @@ public class Stopka extends ItemContainer {
                 }
                 else {
                     item.setItemInContainer(true);
-                    item.setItemInContainerMap(item,itemcont);
+                  //  item.setItemInContainerMap(item,itemcont);
 
                     stack1.add(item);
                 }

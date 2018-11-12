@@ -2,7 +2,7 @@ import java.util.Random;
 
 public class Main {
    // private static Object randomgenerator1;
-    public static Random randomgenerator1;
+  //  public static Random randomgenerator1;
 
     public static void main(String[] args) throws ItemAlreadyPlacedException, ItemStoreException, ItemNotFlatException {
         Kirpich kirpich1 = new Kirpich("Первый кирпич", 4.9, "красный", "облицовочный","плоский");
@@ -16,14 +16,16 @@ public class Main {
         Korobka korobka1= new Korobka("Первая коробка",1,20,"10","плоский", "Синяя");
         Korobka korobka2 = new Korobka("Вторая коробка",1,15,"плоский");
 
-        Stopka stopka1 = new Stopka("Первая стопка",1,1,"Странная");
+        Stopka stopka1 = new Stopka("Первая стопка",1,5,"Странная");
 
-        meshok2.addItem(kirpich1, meshok1);
-        meshok2.addItem(kirpich2, meshok2);
+        korobka1.addItem(kirpich1);
+        korobka1.addItem(kirpich2);
+        korobka2.addItem(kirpich3);
 
         //stopka1.addItem(meshok1,stopka1);
         //System.out.println(korobka1.isPloskii());
-        stopka1.addItem(kirpich1,stopka1);
+        stopka1.addItem(korobka1);
+        stopka1.addItem(korobka2);
        // meshok2.addItem(kirpich3, meshok2);
 
        // System.out.println(kirpich4.getName()); ;
