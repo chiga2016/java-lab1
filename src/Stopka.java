@@ -40,13 +40,18 @@ public class Stopka extends ItemContainer {
                 else {
                     item.setItemInContainer(true);
                   //  item.setItemInContainerMap(item,itemcont);
-
                     stack1.add(item);
                 }
             }
         }
+    }
 
-
+    @Override
+    public Item outItem() {
+       Item item1 = stack1.pop();
+        item1.setItemInContainer(false);
+        System.out.println("УДАЛЕН" + item1.getInfoItem());
+       return item1;
     }
 
     @Override

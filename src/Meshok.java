@@ -8,8 +8,5 @@ public class Meshok  extends ItemContainer {
         setMaxWeight(maxWeight);
     }
 
-
-
-
 }
 

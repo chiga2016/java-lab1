@@ -26,6 +26,7 @@ public class Main {
         //System.out.println(korobka1.isPloskii());
         stopka1.addItem(korobka1);
         stopka1.addItem(korobka2);
+        stopka1.outItem();
        // meshok2.addItem(kirpich3, meshok2);
 
        // System.out.println(kirpich4.getName()); ;

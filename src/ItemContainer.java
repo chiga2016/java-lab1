@@ -56,14 +56,12 @@ public abstract class ItemContainer extends Item  {
    public Item findItem(String str) {
        Item item = null;
        try {
-
            for (int i = 0; i < arr1.size(); i++) {
                if (arr1.get(i).getName().matches(str)) {
                    item = arr1.get(i);
                }
            }
            if (item==null) { throw new NullPointerException();}
-
        }
        catch (NullPointerException e) {
            System.out.println(e+" Элемент не найден" );
@@ -80,7 +78,7 @@ public abstract class ItemContainer extends Item  {
 
 
     @Override
-    public String getInfoItem () { String infoItem = getClass() + "; Название предмета: " + getName() + "; Вес предмета: " + getWeight() + "; Общий вес с предметами: " + Math.rint(100.0 * sumWeight()) / 100.0 + "; Максимальный вес " + getMaxWeight() + "; Количество предметов внутри " + countItem(); return infoItem;}
+    public String getInfoItem () { String infoItem = getClass() + "; Название предмета: " + getName() + "; Вес предмета: " + getWeight() + "; Общий вес с предметами: " + Math.rint(100.0 * sumWeight()) / 100.0 + "; Максимальный вес " + getMaxWeight() + "; В контейнере? "+ getItemInContainer() + "; Количество предметов внутри " + countItem(); return infoItem;}
 
 
 }
