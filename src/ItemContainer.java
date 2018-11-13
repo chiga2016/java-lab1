@@ -25,20 +25,28 @@ public abstract class ItemContainer extends Item  {
         return maxWeight;
     }
 
-   public void addItem(Item item) throws ItemAlreadyPlacedException, ItemStoreException, ItemNotFlatException {
-       if (sumWeight() + item.getWeight()>maxWeight) {
-           throw new ItemStoreException("Предмет " + item.getName() + " с весом = " + item.getWeight() + " не может быть добавлен. Максимальный вес достигнут. Текущий вес " + sumWeight());
-       }
-       else {
-           if ((item).getItemInContainer()) {
-               throw new ItemAlreadyPlacedException("предмет уже добавлен в контейнер");
+   public void addItem(Item item) throws ItemAlreadyPlacedException, ItemStoreException {
+       try {
+           if (sumWeight() + item.getWeight() > maxWeight) {
+               throw new ItemStoreException("Предмет " + item.getName() + " с весом = " + item.getWeight() + " не может быть добавлен. Максимальный вес достигнут. Текущий вес " + sumWeight());
+           } else {
+               if ((item).getItemInContainer()) {
+                   throw new ItemAlreadyPlacedException("предмет " + item.getName() + " уже добавлен в контейнер");
+               } else {
+                   item.setItemInContainer(true);
+                   // item.setItemInContainerMap(item,itemcont);
+                   arr1.add(item);
+               }
            }
-           else {
-               item.setItemInContainer(true);
-              // item.setItemInContainerMap(item,itemcont);
-               arr1.add(item);
-           }
        }
+       catch (ItemAlreadyPlacedException ex){
+           System.out.println(ex);
+       }
+       catch (ItemStoreException ex){
+           System.out.println(ex);
+       }
+
+
    }
     public int countItem(){
         return arr1.size();

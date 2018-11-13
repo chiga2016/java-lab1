@@ -24,25 +24,34 @@ public class Stopka extends ItemContainer {
     }
 
     @Override
-    public void addItem(Item item) throws ItemStoreException, ItemAlreadyPlacedException, ItemNotFlatException {
-        if (countItem() + 1 > maxItem) {
-            throw new ItemStoreException("Предмет " + item.getName() + " не может быть добавлен. Максимальное количество предметов(" + maxItem +")достигнуто. " + "Текущее количество предметов = " + countItem());
+    public void addItem(Item item) throws ItemStoreException, ItemAlreadyPlacedException {
+
+        try {
+            if (countItem() + 1 > maxItem) {
+                throw new ItemStoreException("Предмет " + item.getName() + " не может быть добавлен. Максимальное количество предметов(" + maxItem + ")достигнуто. " + "Текущее количество предметов = " + countItem());
+            } else {
+                //System.out.println("НЕПОНЯТНО " + countItem());
+                if ((item).getItemInContainer()) {
+                    throw new ItemAlreadyPlacedException("предмет " + item.getName() + " уже добавлен в контейнер");
+                } else {
+                    if (!item.isPloskii()) {
+                        throw new ItemNotFlatException("предмет " + item.getName() +  " не является плоским");
+                    } else {
+                        item.setItemInContainer(true);
+                        //  item.setItemInContainerMap(item,itemcont);
+                        stack1.add(item);
+                    }
+                }
+            }
         }
-        else {
-            //System.out.println("НЕПОНЯТНО " + countItem());
-            if ((item).getItemInContainer()) {
-                throw new ItemAlreadyPlacedException("предмет уже добавлен в контейнер");
-            }
-            else {
-                if (!item.isPloskii()) {
-                    throw new ItemNotFlatException("предмет не является плоским");
-                }
-                else {
-                    item.setItemInContainer(true);
-                  //  item.setItemInContainerMap(item,itemcont);
-                    stack1.add(item);
-                }
-            }
+        catch (ItemAlreadyPlacedException ex){
+            System.out.println(ex);
+        }
+        catch (ItemStoreException ex){
+            System.out.println(ex);
+        }
+        catch (ItemNotFlatException ex){
+            System.out.println(ex);
         }
     }
 
@@ -50,7 +59,7 @@ public class Stopka extends ItemContainer {
     public Item outItem() {
        Item item1 = stack1.pop();
         item1.setItemInContainer(false);
-        System.out.println("УДАЛЕН" + item1.getInfoItem());
+        //System.out.println("УДАЛЕН" + item1.getInfoItem());
        return item1;
     }
 

@@ -82,7 +82,7 @@ public abstract class Item {
 
     public boolean isPloskii(){
         boolean bool;
-        if (getParam().toLowerCase().contains("плоский")) {
+        if (getParam().toLowerCase().matches("(?i)^(плоск).*")) {
             bool =  true;
         }
         else {
