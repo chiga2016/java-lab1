@@ -45,13 +45,13 @@ public class Stopka extends ItemContainer {
             }
         }
         catch (ItemAlreadyPlacedException ex){
-            System.out.println(ex);
+            System.err.println(ex);
         }
         catch (ItemStoreException ex){
-            System.out.println(ex);
+            System.err.println(ex);
         }
         catch (ItemNotFlatException ex){
-            System.out.println(ex);
+            System.err.println(ex);
         }
     }
 
@@ -64,7 +64,7 @@ public class Stopka extends ItemContainer {
     }
 
     @Override
-    public String getInfoItem () { String infoItem = getClass() + " ;Название предмета: " + getName() + " ;Вес предмета: " + getWeight() + "; Максимальное количество предметов: " + getMaxItem()  + "; Количество предметов в стопке " + countItem();
+    public String getInfoItem () { String infoItem = getClass() + " ;Название предмета: " + getName() + "; Максимальное количество предметов: " + getMaxItem()  + "; Количество предметов в стопке " + countItem();
         return ( infoItem);
     }
 }
