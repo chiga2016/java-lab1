@@ -1,6 +1,13 @@
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.ExpectedException;
+
+import java.nio.file.Files;
+import java.nio.file.Path;
 
 import static javafx.scene.input.KeyCode.F;
+import static javax.management.Query.not;
+import static org.hamcrest.core.IsEqual.equalTo;
 import static org.junit.Assert.*;
 
 public class ItemContainerTest {
@@ -28,10 +35,10 @@ public class ItemContainerTest {
             assertEquals(E.getWeight(),6.6,0);
 
             F.addItem(E);
-            F.addItem(C);
+          //  F.addItem(C); // - должно быть исключение
             //System.out.println(F.outItem().getName());
             assertTrue(F.outItem() == E);
-            F.addItem(G);   // - должно быть исключение
+           // F.addItem(G);   // - должно быть исключение
         }
         catch (ItemAlreadyPlacedException | ItemStoreException ex){
             System.out.println(ex.getMessage());
@@ -39,14 +46,29 @@ public class ItemContainerTest {
 
     }
 
-    @Test
-    public void sumWeight() {
+//
+    @Test(expected=ItemAlreadyPlacedException.class)
+    public void test2() throws ItemAlreadyPlacedException, ItemStoreException {
+            Kirpich kirpich1 = new Kirpich("кирпич1",2, "плоский");
+            Korobka korobka1 = new Korobka("коробка1",0.5, 5);
+            korobka1.addItem(kirpich1);
+            //korobka1.addItem(kirpich1);
+
+    }
+
+//    @Test(expected=ItemAlreadyPlacedException.class)
+//
+//        public void test3() throws ItemStoreException, ItemAlreadyPlacedException {
+//
+//            Kirpich kirpich1 = new Kirpich("кирпич1", 2, "плоский");
+//            Korobka korobka1 = new Korobka("коробка1", 0.5, 5);
+//            korobka1.addItem(kirpich1);
+//            korobka1.addItem(kirpich1);
+//    }
+
     }
 
 
 
 
 
-
-
-}

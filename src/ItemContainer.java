@@ -86,7 +86,7 @@ public abstract class ItemContainer extends Item  {
 
 
     @Override
-    public String getInfoItem () { String infoItem = getClass() + "; Название предмета: " + getName() + "; Общий вес предмета: " + getWeight() + "; Максимальный вес " + getMaxWeight() + "; В контейнере? "+ getItemInContainer() + "; Количество предметов внутри " + countItem(); return infoItem;}
+    public String getInfoItem () { String infoItem = getClass() + "; Название предмета: " + getName() + "; Общий вес c предметами: " + getWeight() + "; Максимальный вес " + getMaxWeight() + "; В контейнере? "+ getItemInContainer() + "; Количество предметов внутри " + countItem(); return infoItem;}
 
 
 }

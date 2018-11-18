@@ -28,7 +28,7 @@ public class Stopka extends ItemContainer {
 
         try {
             if (countItem() + 1 > maxItem) {
-                throw new ItemStoreException("Предмет " + item.getName() + " не может быть добавлен. Максимальное количество предметов(" + maxItem + ")достигнуто. " + "Текущее количество предметов = " + countItem());
+                throw new ItemStoreException("Предмет " + item.getName() + " не может быть добавлен в контейнер " +this.getName()+  ". Максимальное количество предметов(" + maxItem + ")достигнуто. " + "Текущее количество предметов = " + countItem());
             } else {
                 //System.out.println("НЕПОНЯТНО " + countItem());
                 if ((item).getItemInContainer()) {
