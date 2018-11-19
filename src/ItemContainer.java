@@ -21,7 +21,7 @@ public abstract class ItemContainer extends Item  {
             }
 
             if (item.getItemInContainer()) {
-                throw new ItemAlreadyPlacedException("Предмет уже в контейнере");//"предмет " + item.getName()  + " не может быть добавлен в контейнер " + this.getName() + " Он уже был ранее добавлен в контейнер");
+                throw new ItemAlreadyPlacedException("предмет " + item.getName()  + " не может быть добавлен в контейнер " + this.getName() + " Он уже был ранее добавлен в контейнер");
             }
                itemColl.add(item);
                 item.setItemInContainer(true);
@@ -44,32 +44,5 @@ public abstract class ItemContainer extends Item  {
             return 0;
         }
     }
-
-//   public Item outItem(){
-//       Random r = new Random();
-//       int index = r.nextInt(arr1.size());
-//       Item item1 = arr1.get(index);
-//       arr1.remove( item1);
-//       delWeight(item1.getWeight());
-//       item1.setItemInContainer(false);
-//       return item1;
-//   }
-//
-//   public Item findItem(String str) {
-//       Item item = null;
-//       try {
-//           for (int i = 0; i < arr1.size(); i++) {
-//               if (arr1.get(i).getName().matches(str)) {
-//                   item = arr1.get(i);
-//               }
-//           }
-//           if (item==null) { throw new NullPointerException();}
-//       }
-//       catch (NullPointerException e) {
-//           System.out.println(e+" Элемент не найден" );
-//       }
-//           return item;
-//   }
-
 
 }

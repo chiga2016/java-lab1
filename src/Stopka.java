@@ -21,9 +21,6 @@ public class Stopka extends ItemContainer {
         return maxItem;
     }
 
-   // public int countItem() {       return stack1.size();    }
-
-
     @Override
     public void addItem(Item item) throws Exception {
             if (countItem() + 1 > maxItem) {

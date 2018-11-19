@@ -39,8 +39,6 @@ public class ItemContainerTest {
             //System.out.println(F.outItem().getName());
             assertTrue(F.outItem() == E);
            // F.addItem(G);   // - должно быть исключение
-
-
     }
 
 //
@@ -50,10 +48,7 @@ public class ItemContainerTest {
             Korobka korobka1 = new Korobka("коробка1",0.5, 5);
             korobka1.addItem(kirpich1);
             korobka1.addItem(kirpich1);
-
     }
-
-
     }
 
 

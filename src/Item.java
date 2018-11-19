@@ -25,7 +25,6 @@ public abstract class Item {
         this.weight = weight;
     }
 
-
     public void setParam(String param1) {
         param.add(param1);
     }
@@ -72,17 +71,5 @@ public abstract class Item {
         Matcher m = plosk.matcher(this.getParam());
         //System.out.println(this.getName());
         return m.matches();
-        /*
-        boolean bool;
-        if (getParam().matches("(?i)^(плоск)(.*)")) {
-            bool =  true;
-        }
-        else {
-            bool = false;
-        }
-        return bool;
-        */
     }
-
-
 }

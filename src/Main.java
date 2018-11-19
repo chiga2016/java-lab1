@@ -4,7 +4,6 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 public class Main {
-
     public static void main(String[] args) throws ItemAlreadyPlacedException, Exception, ItemNotFlatException {
         Kirpich kirpich1 = new Kirpich("Первый кирпич", 2, "красный", "облицовочный","ПЛосКий");
         Kirpich kirpich2 = new Kirpich("Второй кирпич", 2, "белый","Плоский");
