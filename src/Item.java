@@ -21,13 +21,10 @@ public abstract class Item {
         this.name = name;
     }
 
-    public void setWeight(double weight) {
+    protected void setWeight(double weight) {
         this.weight = weight;
     }
 
-    public void addWeight(double weight) { setWeight(getWeight()+weight); }
-
-    public void delWeight(double weight) { setWeight(getWeight()-weight); }
 
     public void setParam(String param1) {
         param.add(param1);
@@ -63,6 +60,7 @@ public abstract class Item {
     public void setItemInContainer(boolean itemInContainer) {
         this.itemInContainer = itemInContainer;
     }
+
     public String getInfoItem () {
         String infoItem = getClass() + "; Название предмета: " + name + "; Вес предмета: " + weight + "; В контейнере? "+ getItemInContainer() + "; Доп.параметр:" + getParam(); return infoItem;
     }

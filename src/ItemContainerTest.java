@@ -20,8 +20,8 @@ public class ItemContainerTest {
     Stopka F = new Stopka("Новая стопка",0.1,5,"стопка какая то");
 
     @Test
-    public void test1() {
-        try {
+    public void test1() throws Exception {
+
             D.addItem(A);
             //System.out.println(D.getWeight());
             D.addItem(B);
@@ -39,32 +39,20 @@ public class ItemContainerTest {
             //System.out.println(F.outItem().getName());
             assertTrue(F.outItem() == E);
            // F.addItem(G);   // - должно быть исключение
-        }
-        catch (ItemAlreadyPlacedException | ItemStoreException ex){
-            System.out.println(ex.getMessage());
-        }
+
 
     }
 
 //
-    @Test(expected=ItemAlreadyPlacedException.class)
-    public void test2() throws ItemAlreadyPlacedException, ItemStoreException {
+    @Test(expected=Exception.class)
+    public void test2() throws Exception {
             Kirpich kirpich1 = new Kirpich("кирпич1",2, "плоский");
             Korobka korobka1 = new Korobka("коробка1",0.5, 5);
             korobka1.addItem(kirpich1);
-            //korobka1.addItem(kirpich1);
+            korobka1.addItem(kirpich1);
 
     }
 
-//    @Test(expected=ItemAlreadyPlacedException.class)
-//
-//        public void test3() throws ItemStoreException, ItemAlreadyPlacedException {
-//
-//            Kirpich kirpich1 = new Kirpich("кирпич1", 2, "плоский");
-//            Korobka korobka1 = new Korobka("коробка1", 0.5, 5);
-//            korobka1.addItem(kirpich1);
-//            korobka1.addItem(kirpich1);
-//    }
 
     }
 

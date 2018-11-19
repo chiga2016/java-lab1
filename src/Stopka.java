@@ -1,14 +1,16 @@
+import java.util.ArrayList;
 import java.util.Stack;
 
 public class Stopka extends ItemContainer {
     private int maxItem;
     private int currentCountItem;
 
-    Stack<Item> stack1 = new Stack<Item>();
+    //Stack<Item> stack1 = new Stack<Item>();
 
     public Stopka(String name, double weight, int maxItem, String ...str) {
         super(name, weight, str);
         setMaxItem(maxItem);
+        itemColl = new Stack<Item>();
     }
 
     public void setMaxItem(int maxItem) {
@@ -19,48 +21,55 @@ public class Stopka extends ItemContainer {
         return maxItem;
     }
 
-    public int countItem() {
-       return stack1.size();
-    }
+   // public int countItem() {       return stack1.size();    }
+
 
     @Override
-    public void addItem(Item item) throws ItemStoreException, ItemAlreadyPlacedException {
-
-        try {
+    public void addItem(Item item) throws Exception {
             if (countItem() + 1 > maxItem) {
                 throw new ItemStoreException("Предмет " + item.getName() + " не может быть добавлен в контейнер " +this.getName()+  ". Максимальное количество предметов(" + maxItem + ")достигнуто. " + "Текущее количество предметов = " + countItem());
-            } else {
-                //System.out.println("НЕПОНЯТНО " + countItem());
-                if ((item).getItemInContainer()) {
-                    throw new ItemAlreadyPlacedException("предмет " + item.getName() + " уже добавлен в контейнер");
-                } else {
-                    if (!item.isPloskii()) {
-                        throw new ItemNotFlatException("предмет " + item.getName() +  " не является плоским");
-                    } else {
-                        item.setItemInContainer(true);
-                        //  item.setItemInContainerMap(item,itemcont);
-                        stack1.add(item);
-                    }
-                }
             }
-        }
-        catch (ItemAlreadyPlacedException ex){
-            System.err.println(ex);
-        }
-        catch (ItemStoreException ex){
-            System.err.println(ex);
-        }
-        catch (ItemNotFlatException ex){
-            System.err.println(ex);
-        }
+            if (!item.isPloskii()) {
+                throw new ItemNotFlatException("предмет " + item.getName() +  " не является плоским");
+            }
+            if (!item.isPloskii()) {
+                throw new ItemNotFlatException("предмет " + item.getName() +  " не является плоским");
+            }
+            else {
+                  super.addItem(item);
+            }
     }
 
-    @Override
     public Item outItem() {
-       Item item1 = stack1.pop();
-        item1.setItemInContainer(false);
-        //System.out.println("УДАЛЕН" + item1.getInfoItem());
-       return item1;
+        Item item1 = null;
+        try {
+            if (countItem() > 0) {
+                item1 = ((Stack<Item>) itemColl).pop();
+                item1.setItemInContainer(false);
+                return item1;
+            } else {
+                return null;
+            }
+        } catch (Exception ex) {
+            ex.getMessage();
+        }
+        return item1;
+    }
+
+    public Item findItem(String str) {
+        Item item = null;
+        try {
+            for (int i = 0; i < itemColl.size(); i++) {
+                if ((((Stack<Item>)itemColl)).get(i).getName().matches(str)) {
+                    item = (((Stack<Item>)itemColl)).get(i);
+                }
+            }
+            if (item==null) { throw new NullPointerException();}
+        }
+        catch (NullPointerException e) {
+            System.out.println(e+" Элемент не найден" );
+        }
+        return item;
     }
 
     @Override
